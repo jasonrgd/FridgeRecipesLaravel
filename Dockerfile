@@ -40,6 +40,10 @@ WORKDIR /var/www/html
 COPY . /var/www/html/
 RUN sh -c "composer install"
 
+RUN sh -c "cp .env.example .env"
+
+RUN php artisan key:generate
+
 RUN php artisan l5-swagger:generate
 
 RUN chown nginx:nginx . -R
