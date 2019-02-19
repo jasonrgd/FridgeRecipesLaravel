@@ -10,7 +10,7 @@ Alternatively you can view use swagger editor by grabbing the file located at st
 
 Bash into your Docker container
 
-    docker-compose exec rezdy_app_1 /bin/sh
+    docker-compose exec fridgerecipes_app_1 /bin/sh
     
 Use postman to query endpoint at 
     
