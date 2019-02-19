@@ -31,11 +31,11 @@ class Recipes extends Model
     /**
      * @return bool
      */
-    public function isUsable():bool
+    public function isUsable(): bool
     {
         $isUsable = true;
-        Collection::make($this->ingredients)->map(function($item) use (&$isUsable){
-            if (!$item->isUsable()){
+        Collection::make($this->ingredients)->map(function ($item) use (&$isUsable) {
+            if (!$item->isUsable()) {
                 $isUsable = false;
             }
         });
@@ -46,7 +46,8 @@ class Recipes extends Model
     /**
      * @param $date
      */
-    public function setCookedByDate($date){
+    public function setCookedByDate($date)
+    {
         $cookedByDate = Carbon::parse($date);
 
         if ($this->cookedByDate == null || $this->cookedByDate > $cookedByDate) {
@@ -54,14 +55,16 @@ class Recipes extends Model
         }
     }
 
-    public function getCookedByDate():Carbon {
+    public function getCookedByDate(): Carbon
+    {
         return $this->cookedByDate;
     }
 
     /**
      * @return string
      */
-    public function getTitle():string {
+    public function getTitle(): string
+    {
         return $this->title;
     }
 
@@ -69,7 +72,8 @@ class Recipes extends Model
      * @return array
      */
 
-    public function getIngredients() {
+    public function getIngredients()
+    {
         return Collection::make($this->ingredients)->map(function ($item) {
             return $item->toArray();
         })->toArray();

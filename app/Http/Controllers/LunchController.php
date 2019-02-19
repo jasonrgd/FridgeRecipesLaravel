@@ -17,7 +17,8 @@ class LunchController extends Controller
         $this->transformer = $transformer;
     }
 
-    public function getRecipes(){
+    public function getRecipes()
+    {
         return $this->transformer->transform($this->repository->getValid());
     }
 }

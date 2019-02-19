@@ -22,7 +22,7 @@ abstract class Model implements ModelInterface
         $found = new static();
         $all->map(function ($item) use ($name, &$found) {
             if ($item->getTitle() == $name) {
-                    $found = $item;
+                $found = $item;
             }
         });
 
@@ -31,7 +31,7 @@ abstract class Model implements ModelInterface
 
     public function all()
     {
-        return (new Collection($this->query()[$this->fileName]))->map(function($item){
+        return (new Collection($this->query()[$this->fileName]))->map(function ($item) {
             $model = new static();
             $model->fill($item);
             return $model;
@@ -41,13 +41,13 @@ abstract class Model implements ModelInterface
     public function getValid()
     {
         $all = $this->all();
-        $items =  $all->reject(function ($item) {
+        $items = $all->reject(function ($item) {
             if (!$item->isUsable()) {
                 return $item;
             }
         });
 
-        return $items->sort(function($a, $b){
+        return $items->sort(function ($a, $b) {
             if ($a->getCookedByDate() == $b->getCookedByDate()) {
                 return 0;
             }
@@ -56,15 +56,17 @@ abstract class Model implements ModelInterface
         });
     }
 
-    public function query(){
+    public function query()
+    {
         $path = $this->getFilePath();
         $builder = new Builder($path);
         return $builder->load();
     }
 
-    public function getFilePath(){
+    public function getFilePath()
+    {
 
-        $path = config('jsonstore.path').'/'.$this->fileName.'.json';
+        $path = config('jsonstore.path') . '/' . $this->fileName . '.json';
 
         if ($path == '' || !Storage::exists($path)) {
             throw new FileNotFoundException($path);

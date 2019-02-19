@@ -4,7 +4,8 @@ namespace App\Library\Json;
 
 use Illuminate\Support\Facades\Storage;
 
-class JsonFileParser {
+class JsonFileParser
+{
 
     private $fileName;
 
@@ -13,12 +14,14 @@ class JsonFileParser {
         $this->fileName = $fileName;
     }
 
-    public function load(){
+    public function load()
+    {
         $data = file_get_contents($this->fileName);
-        return json_decode($data,'true');
+        return json_decode($data, 'true');
     }
 
-    public function setFileName($fileName){
+    public function setFileName($fileName)
+    {
         $this->fileName = $fileName;
     }
 }

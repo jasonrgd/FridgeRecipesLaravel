@@ -16,9 +16,9 @@ class Ingredients extends Model
 
     public function fill($item)
     {
-       $this->title = $item['title'];
-       $this->bestBefore = $item['best-before'];
-       $this->useBy = $item['use-by'];
+        $this->title = $item['title'];
+        $this->bestBefore = $item['best-before'];
+        $this->useBy = $item['use-by'];
     }
 
     public function isUsable()
@@ -56,7 +56,8 @@ class Ingredients extends Model
         return $this->bestBefore;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         return array(
             'title' => $this->title,
             'best-before' => $this->bestBefore,
