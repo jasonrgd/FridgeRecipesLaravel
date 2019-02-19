@@ -64,7 +64,7 @@ class Ingredients extends Model
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -73,7 +73,7 @@ class Ingredients extends Model
 
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getBestBefore()
     {

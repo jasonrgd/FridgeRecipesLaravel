@@ -108,4 +108,12 @@ abstract class Model implements ModelInterface
      * @return bool
      */
     abstract function isUsable(): bool;
+
+    /**
+     * @param $fileName
+     */
+    public function setFileName($fileName): string
+    {
+        $this->fileName = $fileName;
+    }
 }
