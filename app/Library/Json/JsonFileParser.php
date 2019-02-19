@@ -2,24 +2,38 @@
 
 namespace App\Library\Json;
 
-use Illuminate\Support\Facades\Storage;
-
+/**
+ * Class JsonFileParser
+ * @package App\Library\Json
+ */
 class JsonFileParser
 {
-
+    /**
+     * @var string
+     */
     private $fileName;
 
+    /**
+     * JsonFileParser constructor.
+     * @param string $fileName
+     */
     public function __construct($fileName = '')
     {
         $this->fileName = $fileName;
     }
 
-    public function load()
+    /**
+     * @return array
+     */
+    public function load(): array
     {
         $data = file_get_contents($this->fileName);
         return json_decode($data, 'true');
     }
 
+    /**
+     * @param $fileName
+     */
     public function setFileName($fileName)
     {
         $this->fileName = $fileName;

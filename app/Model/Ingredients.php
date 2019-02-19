@@ -6,6 +6,10 @@ namespace App\Model;
 
 use Carbon\Carbon;
 
+/**
+ * Class Ingredients
+ * @package App\Model
+ */
 class Ingredients extends Model
 {
     protected $fileName = 'ingredients';

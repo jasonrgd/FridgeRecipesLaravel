@@ -7,14 +7,36 @@ namespace App\Model;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
+/**
+ * Class Recipes
+ * @package App\Model
+ */
 class Recipes extends Model
 {
+    /**
+     * @var string
+     */
     protected $fileName = 'recipes';
 
+    /**
+     * @var Carbon
+     */
     private $cookedByDate;
+
+    /**
+     * @var string
+     */
     private $title;
+
+    /**
+     * @var array
+     */
     private $ingredients;
 
+    /**
+     * @param $item
+     * @return mixed|void
+     */
     public function fill($item)
     {
         $this->title = $item['title'];
@@ -55,6 +77,9 @@ class Recipes extends Model
         }
     }
 
+    /**
+     * @return Carbon
+     */
     public function getCookedByDate(): Carbon
     {
         return $this->cookedByDate;
@@ -71,8 +96,7 @@ class Recipes extends Model
     /**
      * @return array
      */
-
-    public function getIngredients()
+    public function getIngredients(): array
     {
         return Collection::make($this->ingredients)->map(function ($item) {
             return $item->toArray();

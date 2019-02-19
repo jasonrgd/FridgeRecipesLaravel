@@ -8,11 +8,22 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\FileNotFoundException;
 
+/**
+ * Class Model
+ * @package App\Model
+ */
 abstract class Model implements ModelInterface
 {
+    /**
+     * @var string
+     */
     protected $fileName;
 
-    public function get($name = '*')
+    /**
+     * @param string $name
+     * @return Model
+     */
+    public function get($name = '*'): Model
     {
         if ($name == '*') {
             return $this->all();
@@ -29,7 +40,11 @@ abstract class Model implements ModelInterface
         return $found;
     }
 
-    public function all()
+    /**
+     * @return Collection
+     * @throws FileNotFoundException
+     */
+    public function all(): Collection
     {
         return (new Collection($this->query()[$this->fileName]))->map(function ($item) {
             $model = new static();
@@ -56,6 +71,10 @@ abstract class Model implements ModelInterface
         });
     }
 
+    /**
+     * @return array
+     * @throws FileNotFoundException
+     */
     public function query()
     {
         $path = $this->getFilePath();
@@ -63,7 +82,11 @@ abstract class Model implements ModelInterface
         return $builder->load();
     }
 
-    public function getFilePath()
+    /**
+     * @return string
+     * @throws FileNotFoundException
+     */
+    public function getFilePath(): string
     {
 
         $path = config('jsonstore.path') . '/' . $this->fileName . '.json';
@@ -75,7 +98,14 @@ abstract class Model implements ModelInterface
         return Storage::disk('local')->path($path);
     }
 
+    /**
+     * @param $item
+     * @return mixed
+     */
     abstract function fill($item);
 
-    abstract function isUsable();
+    /**
+     * @return bool
+     */
+    abstract function isUsable(): bool;
 }
