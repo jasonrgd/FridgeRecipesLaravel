@@ -19,7 +19,7 @@ class LunchController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/lunch/",
+     *     path="/lunch",
      *     tags={"Lunch"},
      *     summary="Fetches all valid recipes",
      *     operationId="getRecipes",

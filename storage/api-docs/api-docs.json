@@ -1,0 +1,48 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Fridge Data Service",
+        "description": "The Fridge data service allows you to query all recipes",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "jason.rgd@gmail.com"
+        },
+        "license": {
+            "name": "Copyright 2018 LeanJ.De All rights reserved ",
+            "url": "https://www.leanj.de"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api/",
+            "description": "OpenApi host"
+        }
+    ],
+    "paths": {
+        "/lunch": {
+            "get": {
+                "tags": [
+                    "Lunch"
+                ],
+                "summary": "Fetches all valid recipes",
+                "operationId": "getRecipes",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Lunch",
+            "description": "Operations to Query the lunch endpoint",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "https://google.com/"
+            }
+        }
+    ]
+}
