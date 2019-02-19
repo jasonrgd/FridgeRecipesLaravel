@@ -12,12 +12,29 @@ use Carbon\Carbon;
  */
 class Ingredients extends Model
 {
+    /**
+     * @var string
+     */
     protected $fileName = 'ingredients';
-
+    /**
+     * @var string
+     */
     private $title;
+
+    /**
+     * @var string
+     */
     private $bestBefore;
+
+    /**
+     * @var string
+     */
     private $useBy;
 
+    /**
+     * @param $item
+     * @return mixed|void
+     */
     public function fill($item)
     {
         $this->title = $item['title'];
@@ -25,7 +42,10 @@ class Ingredients extends Model
         $this->useBy = $item['use-by'];
     }
 
-    public function isUsable()
+    /**
+     * @return bool
+     */
+    public function isUsable(): bool
     {
 
         if ($this->title == null) {
@@ -60,6 +80,9 @@ class Ingredients extends Model
         return $this->bestBefore;
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         return array(
