@@ -40,8 +40,13 @@ WORKDIR /var/www/html
 COPY . /var/www/html/
 RUN sh -c "composer install"
 
+RUN php artisan l5-swagger:generate
+
+RUN chown nginx:nginx . -R
+
 RUN chmod -R 777 storage
 RUN chmod -R 777 bootstrap/cache
+
 
 EXPOSE 9000
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
