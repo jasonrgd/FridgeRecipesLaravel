@@ -17,6 +17,19 @@ class LunchController extends Controller
         $this->transformer = $transformer;
     }
 
+    /**
+     * @OA\Get(
+     *     path="/lunch/",
+     *     tags={"Lunch"},
+     *     summary="Fetches all valid recipes",
+     *     operationId="getRecipes",
+     *     @OA\Response(response="200", description="Success"),
+     * )
+     */
+
+    /**
+     * @return array
+     */
     public function getRecipes()
     {
         return $this->transformer->transform($this->repository->getValid());
